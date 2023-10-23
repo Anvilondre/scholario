@@ -1,6 +1,5 @@
 from sentence_transformers import SentenceTransformer
 
-
 class Encoder:
     _instance = None
 

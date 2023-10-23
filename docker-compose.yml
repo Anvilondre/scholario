@@ -23,9 +23,9 @@ services:
       context: encoder_worker
       dockerfile: Dockerfile
     environment:
-      HF_HOME: /huggingface
+        SENTENCE_TRANSFORMERS_HOME: /sentence_transformers
     volumes:
-      - hf-cache:/huggingface
+      - sentence-transformers-home:/sentence_transformers
     ports:
       - 5001:5001
     depends_on:
@@ -33,4 +33,4 @@ services:
 volumes:
   qdrant-data:
   redis-data:
-  hf-cache:
+  sentence-transformers-home:
