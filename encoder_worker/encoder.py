@@ -1,4 +1,3 @@
-import os
 from sentence_transformers import SentenceTransformer
 
 class Encoder:
@@ -9,7 +8,10 @@ class Encoder:
             return cls._instance
         cls._instance = super(Encoder, cls).__new__(cls)
 
-        cls.model = SentenceTransformer('all-mpnet-base-v2').to(os.environ['DEVICE'])
+        import torch
+        device = 'cuda' if torch.cuda.is_available() else 'cpu'
+
+        cls.model = SentenceTransformer('all-mpnet-base-v2').to(device)
 
         return cls._instance
 
