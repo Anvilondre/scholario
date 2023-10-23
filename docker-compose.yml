@@ -21,10 +21,10 @@ services:
   worker:
     build:
       context: encoder_worker
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile_${WORKER_DEVICE}
     environment:
         SENTENCE_TRANSFORMERS_HOME: /sentence_transformers
-        DEVICE: 'auto'
+        DEVICE: ${WORKER_DEVICE}
     volumes:
       - sentence-transformers-home:/sentence_transformers
     ports:

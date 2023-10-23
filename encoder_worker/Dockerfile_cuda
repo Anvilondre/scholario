@@ -1,0 +1,14 @@
+FROM nvidia/cuda:12.2.2-base-ubuntu22.04
+COPY . /app
+WORKDIR /app
+
+RUN apt update && sudo apt upgrade
+
+RUN add-apt-repository ppa:deadsnakes/ppa
+RUN apt install python3.11
+
+
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
+
+ENTRYPOINT ["python", "app.py"]
