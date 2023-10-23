@@ -24,20 +24,13 @@ services:
       dockerfile: Dockerfile_cpu
     environment:
         SENTENCE_TRANSFORMERS_HOME: /sentence_transformers
-        DEVICE: ${WORKER_DEVICE}
+        DEVICE: cpu
     volumes:
       - sentence-transformers-home:/sentence_transformers
     ports:
       - 5001:5001
     depends_on:
       - redis
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              capabilities: [gpu]
-              device_ids: ['0']
 volumes:
   qdrant-data:
   redis-data:
