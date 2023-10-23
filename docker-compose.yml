@@ -24,6 +24,7 @@ services:
       dockerfile: Dockerfile
     environment:
         SENTENCE_TRANSFORMERS_HOME: /sentence_transformers
+        DEVICE: 'auto'
     volumes:
       - sentence-transformers-home:/sentence_transformers
     ports:
